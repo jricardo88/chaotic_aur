@@ -5,9 +5,8 @@ GREEN='\033[0;32m'
 CYAN='\033[0;36m'
 YELLOW='\033[1;33m'
 RED='\033[0;31m'
-NC='\033[0m' # No Color
+NC='\033[0m'
 
-# Limpiar pantalla para la bienvenida
 clear
 
 echo -e "${CYAN}==========================================${NC}"
@@ -17,17 +16,20 @@ echo -e "${CYAN}==========================================${NC}"
 # 1. Verificación si ya está instalado
 if grep -q "\[chaotic-aur\]" /etc/pacman.conf && [ -f /etc/pacman.d/chaotic-mirrorlist ]; then
     echo -e "${YELLOW}Aviso:${NC} Parece que Chaotic-AUR ya está configurado en tu sistema."
-    echo -e "¿Deseas intentar reinstalarlo de todas formas? (s/n)"
-    read -r response
+    # Usamos /dev/tty para que read funcione correctamente incluso mediante curl | bash
+    echo -n -e "¿Deseas reinstalarlo de todas formas? (s/N): "
+    read -r response < /dev/tty
+    
     if [[ ! "$response" =~ ^([sS][iI]|[sS])$ ]]; then
-        echo -e "${RED}Instalación cancelada.${NC}"
+        echo -e "${RED}Instalación cancelada por el usuario.${NC}"
         exit 0
     fi
+    echo -e "${YELLOW}Reinstalando...${NC}"
 else
     echo -e "${YELLOW}Este script añadirá el repositorio Chaotic-AUR a tu sistema.${NC}"
     echo -e "Esto permitirá instalar paquetes pre-compilados del AUR directamente."
     echo -e "\nPresiona ${GREEN}ENTER${NC} para continuar o ${RED}Ctrl+C${NC} para cancelar."
-    read -r
+    read -r < /dev/tty
 fi
 
 echo -e "${GREEN}Iniciando configuración...${NC}"
