@@ -1,20 +1,18 @@
-Aquí tienes la versión definitiva y unificada para tu README.md, combinando lo mejor de ambos textos y utilizando tus enlaces reales.
+# Chaotic-AUR Automated Installer
 
-Chaotic-AUR Automated Installer
-A simple and streamlined Bash script to automate the setup of the Chaotic-AUR repository on Arch Linux and its derivatives. This script handles key importation, keyring installation, and configuration updates in one go.
+A simple and streamlined Bash script to automate the setup of the **Chaotic-AUR** repository on Arch Linux and its derivatives. This script handles key importation, keyring installation, and configuration updates in one go.
 
-✨ Features
-Automated Key Management: Fetches and signs the primary key from Ubuntu's keyserver.
+## ✨ Features
+* **Automated Key Management:** Fetches and signs the primary key from Ubuntu's keyserver.
+* **Smart Config:** Appends the repository to `/etc/pacman.conf` only if it's not already present to prevent duplicates.
+* **Sync Included:** Automatically refreshes your pacman databases after installation.
 
-Smart Config: Appends the repository to /etc/pacman.conf only if it's not already present to prevent duplicates.
+## 🚀 Quick Start
 
-Sync Included: Automatically refreshes your pacman databases after installation.
+You can run the script directly via `curl`. It is recommended to use the `-fsSL` flags to ensure a secure and clean execution:
 
-🚀 Quick Start
-You can run the script directly via curl. It is recommended to use the -fsSL flags to ensure a secure and clean execution:
-
-Bash
-curl -fsSL https://raw.githubusercontent.com/jricardo88/chaotic_aur/main/install-chaotic.sh | bash
+```bash
+curl -fsSL [https://raw.githubusercontent.com/jricardo88/chaotic_aur/main/install-chaotic.sh](https://raw.githubusercontent.com/jricardo88/chaotic_aur/main/install-chaotic.sh) | bash
 [!IMPORTANT] This script requires sudo privileges to modify system configuration files and install keyrings. Always review scripts from the internet before executing them.
 
 🛠️ What the script does
@@ -37,7 +35,7 @@ If you prefer to inspect the code before running it:
 Clone the repository:
 
 Bash
-git clone https://github.com/jricardo88/chaotic_aur.git
+git clone [https://github.com/jricardo88/chaotic_aur.git](https://github.com/jricardo88/chaotic_aur.git)
 cd chaotic_aur
 Give execution permissions:
 
