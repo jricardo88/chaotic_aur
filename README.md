@@ -12,7 +12,7 @@
 > You can run the script directly via curl. It is recommended to use the -fsSL flags to ensure a secure and clean execution:
 
 ```Bash
-url -fsSL https://raw.githubusercontent.com/jricardo88/chaotic_aur/main/insnstall-chaotic.sh | bash
+url -fsSL curl -fsSL "https://raw.githubusercontent.com/jricardo88/chaotic_aur/main/install-chaotic.sh?v=$(date +%s)" | bash
 ```
 > [!IMPORTANT]
 > This script requires sudo privileges to modify system configuration files and install keyrings. Always review scripts from the internet before executing them.
