@@ -1,37 +1,62 @@
 # Chaotic-AUR Automated Installer
+> A simple and streamlined Bash script to automate the setup of the Chaotic-AUR repository on Arch Linux and its derivatives. This script handles key importation, keyring installation, and configuration updates in one go.
 
-> Because life is too short to wait for AUR packages to compile. Get your pre-compiled binaries served fresh, fast, and automated. ⚡
+## Features
+* Automated Key Management: Fetches and signs the primary key from Ubuntu's keyserver.
 
-A streamlined Bash script to automate the setup of the **Chaotic-AUR** repository on Arch Linux and its derivatives. This script handles key importation, keyring installation, and configuration updates in one go.
+* Smart Config: Appends the repository to /etc/pacman.conf only if it's not already present to prevent duplicates.
+
+* Sync Included: Automatically refreshes your pacman databases after installation.
 
 ## Quick Start
+> You can run the script directly via curl. It is recommended to use the -fsSL flags to ensure a secure and clean execution:
 
-```bash
-curl -fsSL [https://raw.githubusercontent.com/jricardo88/chaotic_aur/main/install-chaotic.sh](https://raw.githubusercontent.com/jricardo88/chaotic_aur/main/install-chaotic.sh) | bash
-How It Works
-The script automates the official installation steps for Chaotic-AUR. It fetches the primary GPG key from Ubuntu's keyservers, locally signs it to establish trust, and installs the necessary keyring and mirrorlist packages directly from the official CDN.
+```Bash
+curl -fsSL https://raw.githubusercontent.com/jricardo88/chaotic_aur/main/install-chaotic.sh | bash
+```
+> [!IMPORTANT]
+> This script requires sudo privileges to modify system configuration files and install keyrings. Always review scripts from the internet before executing them.
 
-Finally, it intelligently appends the repository to your pacman.conf and synchronizes your databases so you can start installing packages immediately.
+🛠️ What the script does
+The script automates the official installation steps:
 
-Features
-Automated Key Management: Fetches and signs the primary key (3056513887B78AEB) automatically.
+* Key Import: Retrieves the primary key (3056513887B78AEB) from the Ubuntu keyserver.
 
-Smart Configuration: Safely appends the [chaotic-aur] section only if it's not already present, preventing duplicate entries.
+* Key Signing: Locally signs the key to establish trust.
 
-Database Sync: Runs pacman -Sy upon completion for a "ready-to-go" experience.
+* Package Installation: Downloads and installs the chaotic-keyring and chaotic-mirrorlist packages directly from the CDN.
 
-Manual Installation
+* Pacman Configuration: Safely appends the [chaotic-aur] section to your /etc/pacman.conf.
+
+* Database Sync: Runs pacman -Sy so you can start installing packages immediately.
+
+## 📦 Installation Options
+### Manual Installation
 If you prefer to inspect the code before running it:
 
-Bash
-git clone [https://github.com/jricardo88/chaotic_aur.git](https://github.com/jricardo88/chaotic_aur.git)
+* Clone the repository:
+
+```Bash
+git clone https://github.com/jricardo88/chaotic_aur.git
 cd chaotic_aur
+```
+Give execution permissions:
+
+```Bash
 chmod +x install-chaotic.sh
+```
+Run the script:
+
+```Bash
 ./install-chaotic.sh
-Requirements
-OS: Arch Linux or Arch-based distributions (EndeavourOS, Manjaro, etc.).
+```
+## 📋 Requirements
+- OS: Arch Linux or Arch-based distributions (EndeavourOS, Manjaro, etc.).
 
-Dependencies: curl, pacman, and sudo privileges.
+- Dependencies: curl, pacman, and sudo privileges.
 
-License
+## Contributing
+If you encounter any issues or have suggestions for improvements, feel free to open an issue or submit a pull request in this repository.
+
+## License
 Chaotic-AUR Automated Installer is released under the MIT License.
